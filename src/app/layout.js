@@ -5,6 +5,8 @@ import "./globals.css";
 import Header from "./components/Header";
 import { ThemeProvider } from "next-themes";
 import ThemeCom from "./components/ThemeCom";
+import { ClerkProvider } from "@clerk/nextjs";
+import { ThemeModeScript } from "flowbite-react";
 
 
 
@@ -26,18 +28,23 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" supportHydrationWarning>
-      <body
+    <ClerkProvider>
+      <html lang="en" supporthydrationwarning>
+        <head>
+          <ThemeModeScript/>
+        </head>
+        <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        <ThemeProvider>
-          <ThemeCom>
-            <Header/>
-            {children}
-          </ThemeCom>
-        </ThemeProvider>
+        >
+          <ThemeProvider>
+            <ThemeCom>
+              <Header/>
+              {children}
+            </ThemeCom>
+          </ThemeProvider>
        
-      </body>
-    </html>
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
