@@ -7,12 +7,14 @@ import Link from 'next/link';
 import { AiOutlineSearch } from 'react-icons/ai';
 import { FaMoon, FaSun } from 'react-icons/fa';
 import { usePathname } from 'next/navigation';
+import {useTheme} from "next-themes";
 
 
 
 
 export default function Header() {
     const path = usePathname();
+    const {theme, setTheme} = useTheme();
     
     return (
       <Navbar className='border-b-2'>
@@ -40,9 +42,10 @@ export default function Header() {
           <Button
             className='w-12 h-10 hidden sm:inline'
             color='gray'
-            pill    
+            pill
+            onClick={() => setTheme(theme === "light" ? "dark" : "light")}    
           >
-            <FaMoon/>
+            {theme === "light" ? <FaSun/> : <FaMoon/>} 
           </Button>
 
             <Link href='/sign-in'>
