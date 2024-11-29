@@ -7,6 +7,8 @@ import { ThemeProvider } from "next-themes";
 import ThemeCom from "./components/ThemeCom";
 import { ClerkProvider } from "@clerk/nextjs";
 import { ThemeModeScript } from "flowbite-react";
+import Footer from "./components/Footer";
+import FooterCom from "./components/Footer";
 
 
 
@@ -40,6 +42,7 @@ export default function RootLayout({ children }) {
             <ThemeCom>
               <Header/>
               {children}
+              <FooterCom/>
             </ThemeCom>
           </ThemeProvider>
        
